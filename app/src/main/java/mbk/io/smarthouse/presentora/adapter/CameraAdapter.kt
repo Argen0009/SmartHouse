@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import mbk.io.smarthouse.data.local.model.camera.CameraEntity
+import mbk.io.smarthouse.data.local.model.CameraEntity
 import mbk.io.smarthouse.databinding.ItemCardCameraBinding
 
 
@@ -40,43 +40,7 @@ class RecyclerViewHolder(
         with(binding) {
             videoIv.load(camera.snapshot)
             cameraTv.text = camera.name
-            cameraTv.setOnClickListener {
-                if (binding.videoIv.visibility == View.GONE) {
-                    slideOutViews(binding.videoIv)
-                } else {
-                    slideInViews(binding.videoIv)
-                }
-            }
         }
-
-    private fun slideOutViews(view: View) {
-        val duration = 500L
-
-        view.apply {
-            visibility = View.VISIBLE
-            translationY = -height.toFloat()
-
-            animate()
-                .translationY(0f)
-                .setDuration(duration)
-                .start()
-        }
-    }
-
-    private fun slideInViews(view: View) {
-        val duration = 500L
-
-        view.apply {
-            animate()
-                .translationY(-height.toFloat())
-                .setDuration(duration)
-                .withEndAction {
-                    visibility = View.GONE
-                    translationY = 0f
-                }
-                .start()
-        }
-    }
 }
 
 class CameraDiffUtil : DiffUtil.ItemCallback<CameraEntity>() {
@@ -86,5 +50,4 @@ class CameraDiffUtil : DiffUtil.ItemCallback<CameraEntity>() {
 
     override fun areContentsTheSame(oldItem: CameraEntity, newItem: CameraEntity) =
         oldItem == newItem
-
 }

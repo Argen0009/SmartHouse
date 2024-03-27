@@ -2,10 +2,10 @@ package mbk.io.smarthouse.presentora.door
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import mbk.io.smarthouse.data.Resource
-import com.geeks.smarthome.data.model.door.DoorModel
+import mbk.io.smarthouse.data.resoure.Resource
+import mbk.io.smarthouse.data.response.door.DoorModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import mbk.io.myhome.data.model.door.DoorEntity
+import mbk.io.smarthouse.data.local.model.DoorEntity
 import mbk.io.smarthouse.domain.usecases.GetDoorUseCase
 import javax.inject.Inject
 

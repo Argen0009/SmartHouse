@@ -6,16 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvMyHome"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/white"
-        android:elevation="4dp"
-        android:gravity="center"
-        android:text="My Home"
-        android:textColor="@color/black"
-        android:textSize="26dp" />
+
+
+        <TextView
+            android:id="@+id/tvMyHome"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:text="My Home"
+            android:textColor="@color/black"
+            android:textSize="26dp" >
+
+        </TextView>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLiyayot"
@@ -39,8 +43,28 @@
             android:text="Door" />
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/FavoriteImg"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="28dp"
+            android:src="@drawable/baseline_star_rate_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        " />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
 </LinearLayout>

@@ -7,12 +7,18 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="Гостиница"
+        android:textSize="21dp" />
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CameraCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         app:cardCornerRadius="22sp"
         tools:ignore="MissingConstraints">
 

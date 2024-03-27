@@ -1,7 +1,7 @@
-package mbk.io.myhome.api
+package mbk.io.smarthouse.api
 
-import mbk.io.smarthouse.data.local.model.camera.CameraModel
-import com.geeks.smarthome.data.model.door.DoorModel
+import mbk.io.smarthouse.data.response.camera.CameraModel
+import mbk.io.smarthouse.data.response.door.DoorModel
 import retrofit2.Response
 import retrofit2.http.GET
 

@@ -1,4 +1,4 @@
-package mbk.io.smarthouse.data
+package mbk.io.smarthouse.data.resoure
 
 sealed class Resource <T>(
     val message: String? = null,

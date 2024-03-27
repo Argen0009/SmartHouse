@@ -1,13 +1,12 @@
-package mbk.io.smarthouse.domain.base
+package mbk.io.smarthouse.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import mbk.io.smarthouse.data.Resource
+import mbk.io.smarthouse.data.resoure.Resource
 
 import kotlinx.coroutines.Dispatchers
-import mbk.io.myhome.api.ApiService
 
-abstract class BaseRepository (private val api: ApiService){
+abstract class BaseRepository(){
     fun <T> apiRequest(apiCall: suspend () -> T): LiveData<Resource<T>> =
         liveData(Dispatchers.Main) {
             emit(Resource.Loading())

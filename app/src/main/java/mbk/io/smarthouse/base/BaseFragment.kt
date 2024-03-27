@@ -1,8 +1,8 @@
-package mbk.io.smarthouse.domain.base
+package mbk.io.smarthouse.base
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
-import mbk.io.smarthouse.data.Resource
+import mbk.io.smarthouse.data.resoure.Resource
 
 
 abstract class BaseFragment : Fragment() {

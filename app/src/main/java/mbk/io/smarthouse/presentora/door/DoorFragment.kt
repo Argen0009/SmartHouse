@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -16,8 +15,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import mbk.io.myhome.data.model.door.DoorEntity
-import mbk.io.smarthouse.domain.base.BaseFragment
+import mbk.io.smarthouse.data.local.model.DoorEntity
+import mbk.io.smarthouse.base.BaseFragment
 import mbk.io.smarthouse.databinding.FragmentDoorBinding
 
 @AndroidEntryPoint
@@ -49,7 +48,6 @@ class DoorFragment : BaseFragment() {
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder,
             ): Boolean {
-                // для перетаскивания элементов
                 return false
             }
 

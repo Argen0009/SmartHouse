@@ -7,14 +7,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import mbk.io.myhome.data.model.door.DoorEntity
+import mbk.io.smarthouse.data.local.model.DoorEntity
 import mbk.io.smarthouse.databinding.ItemCardCameraBinding
+import mbk.io.smarthouse.databinding.ItemDoorBinding
 
 class DoorAdapter(private val isDoor: Boolean) :
     ListAdapter<DoorEntity, DoorViewHolder>(DoorDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoorViewHolder {
         return DoorViewHolder(
-            ItemCardCameraBinding.inflate(
+            ItemDoorBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -30,17 +31,17 @@ class DoorAdapter(private val isDoor: Boolean) :
 
 }
 
-class DoorViewHolder(private var binding: ItemCardCameraBinding, private val isDoor: Boolean) :
+class DoorViewHolder(private var binding: ItemDoorBinding, private val isDoor: Boolean) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(camera: DoorEntity) = with(binding) {
-        videoIv.load(camera.snapshot)
-        cameraTv.text = camera.name
-        cameraTv.setOnClickListener {
-            if (binding.videoIv.visibility == View.GONE) {
-                slideOutViews(binding.videoIv)
+    fun bind(door: DoorEntity) = with(binding) {
+        doorIv.load(door.snapshot)
+        doorNameTv.text = door.name
+        doorNameTv.setOnClickListener {
+            if (binding.doorCard.visibility == View.GONE) {
+                slideOutViews(binding.doorCard)
             } else {
-                slideInViews(binding.videoIv)
+                slideInViews(binding.doorCard)
             }
         }
     }

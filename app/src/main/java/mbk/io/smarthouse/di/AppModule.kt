@@ -2,15 +2,15 @@ package mbk.io.smarthouse.di
 
 import android.content.Context
 import androidx.room.Room
-import mbk.io.smarthouse.data.local.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import mbk.io.myhome.api.ApiService
-import mbk.io.smarthouse.data.RMRepository
-import mbk.io.smarthouse.domain.base.BaseRepository
+import mbk.io.smarthouse.api.ApiService
+import mbk.io.smarthouse.data.local.database.AppDatabase
+import mbk.io.smarthouse.domain.repositories.CamerasRepository
+import mbk.io.smarthouse.domain.repositories.DoorsRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -25,7 +25,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRetrofit(
-        okHttpClient: OkHttpClient
+        okHttpClient: OkHttpClient,
     ): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -37,7 +37,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideOkHttpClient(
-        interceptor: HttpLoggingInterceptor
+        interceptor: HttpLoggingInterceptor,
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .writeTimeout(20, TimeUnit.SECONDS)
@@ -48,8 +48,8 @@ object AppModule {
             .build()
     }
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideLoginInterseptor(): HttpLoggingInterceptor {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -57,24 +57,13 @@ object AppModule {
     }
 
     @Provides
-    fun provideAppService(
-        retrofit: Retrofit
-    ): AppModule {
-        return retrofit.create(AppModule::class.java)
+    @Singleton
+    fun provideApiService(
+        retrofit: Retrofit,
+    ): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
 
-    @Singleton
-    @Provides
-    fun provideCameraRepository(api: ApiService,db: AppDatabase): BaseRepository {
-        return RMRepository(api,db)
-    }
-
-    @Singleton
-    @Provides
-    fun provideDoorRepository(api: ApiService,db: AppDatabase): BaseRepository {
-        return RMRepository(api,db)
-    }
-    @Singleton
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
         return Room.databaseBuilder(

@@ -1,9 +1,9 @@
 package mbk.io.smarthouse.domain.usecases
 
 import androidx.lifecycle.LiveData
-import mbk.io.smarthouse.data.Resource
-import mbk.io.smarthouse.data.local.model.camera.CameraModel
-import mbk.io.smarthouse.data.local.model.camera.CameraEntity
+import mbk.io.smarthouse.data.resoure.Resource
+import mbk.io.smarthouse.data.response.camera.CameraModel
+import mbk.io.smarthouse.data.local.model.CameraEntity
 import mbk.io.smarthouse.domain.repositories.CamerasRepository
 import javax.inject.Inject
 

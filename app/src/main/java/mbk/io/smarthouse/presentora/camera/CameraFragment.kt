@@ -14,12 +14,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import mbk.io.smarthouse.data.local.model.camera.CameraEntity
-import mbk.io.smarthouse.domain.base.BaseFragment
+import mbk.io.smarthouse.data.local.model.CameraEntity
+import mbk.io.smarthouse.base.BaseFragment
 import mbk.io.smarthouse.databinding.FragmentCameraBinding
 import mbk.io.smarthouse.presentora.adapter.CameraAdapter
-
-
 
 @AndroidEntryPoint
 class CameraFragment : BaseFragment() {
@@ -46,9 +44,8 @@ class CameraFragment : BaseFragment() {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
+                target: RecyclerView.ViewHolder,
             ): Boolean {
-                // для перетаскивания элементов
                 return false
             }
 
@@ -92,28 +89,28 @@ class CameraFragment : BaseFragment() {
     }
 
     fun getData() {
-        viewModel.getCameras().stateHandler(
-            success = { it ->
-                val list = it.data.cameras
-                CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.clearAll()
-                    list.forEach {
-                        val camera = CameraEntity(
-                            favorites = it.favorites,
-                            name = it.name,
-                            rec = it.rec,
-                            room = it.room,
-                            snapshot = it.snapshot
-                        )
-                        viewModel.insertCamera(camera)
-                    }
-                    withContext(Dispatchers.Main) {
-                        val listDB = viewModel.getDBCameras()
-                        adapter.submitList(listDB)
-                        adapter.notifyDataSetChanged()
+            viewModel.getCameras().stateHandler(
+                success = { it ->
+                    val list = it.data.cameras
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.clearAll()
+                        list.forEach {
+                            val camera = CameraEntity(
+                                favorites = it.favorites,
+                                name = it.name,
+                                rec = it.rec,
+                                room = it.room,
+                                snapshot = it.snapshot
+                            )
+                            viewModel.insertCamera(camera)
+                        }
+                        withContext(Dispatchers.Main) {
+                            val listDB = viewModel.getDBCameras()
+                            adapter.submitList(listDB)
+                            adapter.notifyDataSetChanged()
+                        }
                     }
                 }
-            }
-        )
+            )
     }
 }

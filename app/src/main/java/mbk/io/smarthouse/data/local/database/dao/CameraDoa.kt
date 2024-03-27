@@ -1,10 +1,10 @@
-package mbk.io.smarthouse.data.local.camera
+package mbk.io.smarthouse.data.local.database.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import mbk.io.smarthouse.data.local.model.camera.CameraEntity
+import mbk.io.smarthouse.data.local.model.CameraEntity
 
 @Dao
 interface CameraDao {

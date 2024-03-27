@@ -1,4 +1,4 @@
-package mbk.io.smarthouse.data.local.model.camera
+package mbk.io.smarthouse.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

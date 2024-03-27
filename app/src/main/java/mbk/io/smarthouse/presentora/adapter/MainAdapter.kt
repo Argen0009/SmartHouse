@@ -3,6 +3,7 @@ package mbk.io.smarthouse.presentora.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import mbk.io.smarthouse.presentora.FavoriteFragment
 import mbk.io.smarthouse.presentora.camera.CameraFragment
 import mbk.io.smarthouse.presentora.door.DoorFragment
 
@@ -19,8 +20,7 @@ class MainAdapter(
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> CameraFragment()
-            1 -> DoorFragment()
-            else -> CameraFragment()
+            else -> DoorFragment()
         }
     }
 }

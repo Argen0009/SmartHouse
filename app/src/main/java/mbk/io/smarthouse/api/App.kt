@@ -3,7 +3,7 @@ package mbk.io.smarthouse.api
 import android.app.Application
 import androidx.room.Room
 import dagger.hilt.android.HiltAndroidApp
-import mbk.io.smarthouse.data.local.AppDatabase
+import mbk.io.smarthouse.data.local.database.AppDatabase
 
 @HiltAndroidApp
 class App : Application() {
